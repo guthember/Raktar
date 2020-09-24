@@ -47,6 +47,6 @@ namespace Raktar
       this.ar = ar;
       this.db = db;
     }
-
+    
   }
 }

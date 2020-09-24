@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Web;
 
 namespace Raktar
 {
@@ -28,8 +29,12 @@ namespace Raktar
 
     static void Main(string[] args)
     {
-
       BeolvasRaktar();
+
+      foreach (var t in termekek)
+      {
+        Console.WriteLine(t.Nev);
+      }
 
       Console.ReadKey();
     }

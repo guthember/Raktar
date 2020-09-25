@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Web;
 
 namespace Raktar
 {
@@ -34,13 +30,21 @@ namespace Raktar
 
       while (!rendeles.EndOfStream)
       {
-        string[] sor = rendeles.ReadLine().Split(';');
+        string sor = rendeles.ReadLine();
+        string[] adat = sor.Split(';');
 
-        if ( sor[0] == "M")
+        if ( adat[0] == "M")
         {
           megrendelesek.Add(new Megrendeles(
-              sor[1], sor[2], sor[3]
+              adat[1], adat[2], adat[3]
             ));
+        }
+        else
+        {
+          //megrendelesek[megrendelesek.Count - 1].termekek.Add(sor);
+          megrendelesek[megrendelesek.Count - 1].TetelHozzaad(
+              adat[2], Convert.ToInt32(adat[3])
+            );
         }
       }
 
@@ -51,11 +55,6 @@ namespace Raktar
     {
       BeolvasRaktar();
       BeolvasMegrendeles();
-
-      foreach (var t in megrendelesek)
-      {
-        Console.WriteLine(t.Email);
-      }
 
       Console.ReadKey();
     }
